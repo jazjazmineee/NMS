@@ -1,0 +1,112 @@
+﻿body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #181918;
+    color: #454745;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.wrapper {
+    position: relative;
+}
+
+
+.text {
+    color: #454745;
+    text-align: center;
+    position: relative;
+}
+
+    .text p {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+    }
+
+.always {
+    color: #FFFFFF;
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+    .always p {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+.wifi-symbol {
+    position: absolute;
+    top: calc(40% - 160px); /* Adjust top position to center vertically above text */
+    left: 65%;
+    transform: translateX(-50%);
+    z-index: 1;
+    -ms-transform: rotate(-45deg) translate(-100px);
+    -moz-transform: rotate(-45deg) translate(-100px);
+    -o-transform: rotate(-45deg) translate(-100px);
+    -webkit-transform: rotate(-45deg) translate(-100px);
+    transform: rotate(-45deg) translate(-100px);
+}
+
+.wifi-circle {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-color: #ffffcc;
+    border-style: solid;
+    border-width: 1em 1em 0 0;
+    border-radius: 0 100% 0 0;
+    opacity: 0;
+    animation: wifianimation 3s infinite;
+}
+
+    .wifi-circle.first {
+        animation-delay: 800ms;
+    }
+
+    .wifi-circle.second {
+        width: 5em;
+        height: 5em;
+        animation-delay: 400ms;
+    }
+
+    .wifi-circle.third {
+        width: 3em;
+        height: 3em;
+    }
+
+    .wifi-circle.fourth {
+        width: 1em;
+        height: 1em;
+        opacity: 1;
+        background-color: #ffffcc;
+        animation: none;
+    }
+
+@keyframes wifianimation {
+    0% {
+        opacity: 0.4;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    6% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 0.1;
+    }
+}

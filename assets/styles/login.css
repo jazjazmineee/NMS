@@ -1,0 +1,359 @@
+﻿/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+.bg-container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(180, 137, 10, 0.1), rgba(180, 137, 10, 0.1)), url('/assets/img/background@2x.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.text-form {
+    flex: 1;
+    padding: 5px 20px 30px;
+    top: 10px;
+    color: #ffffff;
+}
+
+.welcome h1 {
+    font-size: 15px;
+    margin: 0;
+    position: relative;
+    padding-left: 110px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+.world h1 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 100px;
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.login-form {
+    width: 450px; /* Fixed width */
+    height: 600px; /* Fixed height */
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translate(50%, -50%);
+    background-color: #FFF;
+    padding: 50px 60px 70px; /* Adjusted padding */
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #181918;
+}
+
+/* Top text field */
+.logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.login-form h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.login-text {
+    margin-bottom: 50px;
+    color: #8B8D97;
+}
+
+.login-form .login-text p {
+    font-size: 13px;
+    margin: 0;
+    text-align: left;
+}
+
+/* Text field */
+.input-group {
+    width: 100%;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    background: #F6F6FA;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    padding-right: 15px; /* Add padding to accommodate the eye icon */
+}
+
+/* Error */
+.auto-style1 {
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+}
+
+.auto-style2 {
+    font-size: 12px;
+    color: red;
+}
+
+.input-field i {
+    margin-left: 15px;
+    color: #909199;
+}
+
+.input-field .input {
+    flex: 1;
+    padding: 18px 15px 18px 40px; /* Adjust padding for icon space */
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+/* Eye icon */
+.input-field .toggle-password {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px; /* Ensure consistency in icon size */
+}
+
+    .input-field .toggle-password i {
+        color: #909199;
+        font-size: 18px;
+    }
+
+    .input-field .toggle-password:hover i {
+        color: #777;
+    }
+
+/*UNDERLINE*/
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
+
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
+/* styling of whole input container */
+.form {
+    --timing: 0.3s;
+    --width-of-input: 200px;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #fff;
+    --border-color: #2f2ee9;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg,#fff);
+}
+/* styling of Input */
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+/* styling of animated border */
+.form:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+    border-radius: var(--after-border-radius);
+}
+
+input:focus {
+    outline: none;
+}
+/* here is code of animated border */
+.form:focus-within:before {
+    transform: scale(1);
+}
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+/* close button shown when typing */
+input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+
+
+/* Forget password */
+.login-form p {
+    text-align: right;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+    .login-form p a {
+        text-decoration: none;
+        color: #aa832d;
+    }
+
+        .login-form p a:hover,
+        .login-form p a:active {
+            text-decoration: underline;
+            color: #634d20;
+        }
+
+/* Button */
+.btn-field {
+    position: absolute;
+    bottom: 60px; /* Adjust the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72%;
+}
+
+    .btn-field .styled-button {
+        width: 100%;
+        background: #EFEFEE;
+        color: #181918;
+        height: 50px;
+        border: none;
+        transition: background 0.3s, color 0.3s;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        line-height: 50px; /* Center text vertically */
+    }
+
+        .btn-field .styled-button:hover {
+            background: #B4890A;
+            color: #EFEFEE;
+        }
+
+/* Ensure styling is applied to the input element rendered by asp:Button */
+.styled-button input {
+    width: 100%;
+    background: #EFEFEE;
+    color: #181918;
+    height: 50px;
+    border: none;
+    transition: background 0.3s, color 0.3s;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    line-height: 50px; /* Center text vertically */
+}
+
+    .styled-button input:hover {
+        background: #B4890A;
+        color: #EFEFEE;
+    }
+
+
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .bg-container {
+        flex-direction: column;
+    }
+
+    .login-form {
+        order: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 450px;
+        margin-bottom: 10px;
+        background-color: #FFF;
+        padding: 50px 60px 70px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #181918;
+    }
+
+    .text-form {
+        display: none;
+    }
+}
+/* Responsive */
+
+
+/* Additional media query for 44-inch TV */
+/* Responsive styling for smaller screens */
+@media only screen and (max-width: 768px) {
+    .bg-container {
+        flex-direction: column;
+    }
+
+    .login-form {
+        order: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 450px;
+        margin-bottom: 10px;
+        background-color: #FFF;
+        padding: 50px 60px 70px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #181918;
+    }
+
+    .text-form {
+        display: none;
+    }
+}

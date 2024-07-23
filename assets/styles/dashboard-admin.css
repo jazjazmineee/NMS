@@ -1,0 +1,626 @@
+﻿/*DROPDOWN*/
+
+/* Date input */
+.select-date {
+    margin-right: 10px; /* Add spacing to the right */
+    margin-bottom: 1px; /* Add spacing at the bottom */
+}
+
+    /* Common styles for all select controls */
+    .select-date input,
+    .select-device select,
+    .select-status select {
+        width: 200px; /* Set a fixed width */
+        height: 40px; /* Set a fixed height */
+        padding: 2px;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        color: #181918;
+        background-color: white;
+        box-sizing: border-box;
+    }
+
+        /* Focus styles */
+        .select-date input:focus,
+        .select-device select:focus,
+        .select-status select:focus {
+            border-color: #B4890A;
+            outline: none; /* Remove default outline */
+        }
+
+        /* Hover and focus styles */
+        .select-device select:hover,
+        .select-device select:focus,
+        .select-status select:hover,
+        .select-status select:focus {
+            border-color: #B4890A;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        /* Placeholder styles */
+        .select-device select option[disabled],
+        .select-status select option[disabled] {
+            color: #6b7280;
+        }
+
+        /* Selected option styles */
+        .select-device select option[selected],
+        .select-status select option[selected] {
+            display: none;
+        }
+
+/* styles.css */
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+/* TOAST */
+.toast {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 1000;
+}
+
+    .toast.active {
+        transform: translateX(0%);
+    }
+
+    .toast .toast-content {
+        display: flex;
+        align-items: center;
+    }
+
+.toast-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    min-width: 35px;
+    background-color: #e58e26;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+}
+
+    .message .text.text-1 {
+        font-weight: 600;
+        color: #333;
+    }
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+    .toast .close:hover {
+        opacity: 1;
+    }
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: transparent;
+}
+
+    .toast .progress:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #e58e26;
+        transition: width 10s linear;
+    }
+
+.progress.active:before {
+    animation: progress 10s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0;
+    }
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: #e58e26;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    button:hover {
+        background-color: #e58e26;
+    }
+
+.toast.active ~ button {
+    pointer-events: none;
+}
+
+/* Reset CSS */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F9;
+    overflow-x: hidden;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Muli-Regular', sans-serif;
+    box-sizing: border-box;
+    background-color: #F8F8F9;
+}
+
+.titles {
+    text-align: left;
+    padding-left: 20px;
+}
+
+    .titles h1 {
+        font-size: 28px;
+        margin-bottom: 5px; /* Add spacing between titles */
+    }
+
+    .titles h2 {
+        font-size: 20px; /* Increase subtitle font size */
+        margin-top: 5px; /* Add spacing between titles */
+    }
+
+.content {
+    padding: 20px; /* Add padding for better UI */
+    display: flex;
+}
+
+
+/*START CONTENT*/
+.content {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Adjusted grid template columns */
+    grid-template-rows: auto 2fr; /* First row for cards, second row for line graph */
+    gap: 20px;
+}
+
+.main-content {
+    border-radius: 10px; /* Add border radius for better appearance */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    background-color: #F8F8F9;
+}
+
+.cards-container {
+    grid-row: 1; /* Place cards container in the first row */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.line-graph-container {
+    grid-row: 2; /* Place line graph container in the second row */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.donut-chart-container {
+    grid-row: 1 / span 2; /* Place donut chart container in the first and second row */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 20px; /* Add margin to separate from the line graph */
+    background-color: #FFF;
+    box-shadow: 0px 12px 24px rgba(2, 30, 84, 0.05);
+    border-radius: 1rem;
+}
+
+/*DONUT*/
+.donut-chart {
+    flex: 1; /* Allow the donut chart to expand within its container */
+    background-color: white;
+    padding: 30px;
+    position: relative; /* Required for absolute positioning of canvas */
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.donutcanvas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-content {
+    flex: 1;
+    margin-left: 50px;
+}
+
+    .header-content h6 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        white-space: nowrap; /* Prevent line wrapping */
+        overflow: hidden; /* Hide overflow */
+        text-overflow: ellipsis; /* Add ellipsis for overflow text */
+        margin-bottom: 20px;
+    }
+
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #888;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+    .legend-item:hover {
+        color: #555; /* Change color on hover */
+    }
+
+.legend-color {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    border-radius: 50%; /* Make the legend color indicator circular */
+}
+
+.healthy {
+    background-color: #0AD17C;
+}
+
+.down {
+    background-color: #c0392b;
+}
+
+.problematic {
+    background-color: #E6A23C;
+}
+
+
+/*CARD */
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.card {
+    flex: 1;
+    height: 150px;
+    padding: 10px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    padding: 20px;
+    border-radius: 1rem;
+}
+
+.card-icon {
+    width: 90px;
+    margin-right: 40px;
+    height: auto; /* Ensure the image maintains its aspect ratio */
+    margin-left: 14px
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+}
+
+.card-value, .card-status {
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 46px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-status {
+    font-size: 16px;
+    color: #181918;
+    text-align: left;
+}
+
+    .card-status:hover span {
+        color: #555; /* Change color on hover */
+        cursor: pointer; /* Change cursor to pointer on hover (optional) */
+    }
+
+
+/*LINE*/
+.line-graph {
+    flex: 1;
+    min-height: 505px;
+    background-color: white;
+    border-radius: 0.8rem;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 12px 24px rgba(2, 30, 84, 0.05);
+    border-radius: 1rem;
+}
+
+.linecanvas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.line-graph-canvas {
+    margin-top: 35px;
+    position: relative; /* Change to relative to allow for dynamic resizing */
+    width: 100%;
+    height: 100%; /* Allow the height to adjust based on the width */
+}
+
+.line-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+    .line-header h1 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+canvas {
+    width: 100% !important; /* Ensure the canvas takes up 100% of the parent */
+    height: 93% !important; /* Allow the height to adjust proportionally */
+}
+
+
+/* ENTRIES DROPDOWN */
+.entries-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+    .entries-dropdown select {
+        padding: 10px;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        color: #181918;
+        background-color: white;
+        width: 100px;
+        transition: border-color 0.3s ease;
+        margin-right: 10px;
+    }
+
+    .entries-dropdown label,
+    .entries-dropdown span.label {
+        font-size: 16px;
+        color: #656575;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+
+    .entries-dropdown select:hover,
+    .entries-dropdown select:focus {
+        border-color: #B4890A;
+        border-width: 1px;
+        outline: none;
+    }
+
+    .entries-dropdown select option {
+        padding: 10px;
+    }
+
+        .entries-dropdown select option:checked {
+            color: #181918;
+        }
+
+    .entries-dropdown select:disabled {
+        opacity: 0.6;
+    }
+
+    .entries-dropdown select:enabled {
+        opacity: 1;
+    }
+
+/*TIME LINE */
+.entries-time {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+    .entries-time h1 {
+        margin-right: 20px;
+    }
+
+    .entries-time label {
+        margin-right: 10px;
+    }
+
+    .entries-time input[type="datetime-local"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+        .entries-time input[type="datetime-local"]:hover {
+            border: 1px solid #B4890A;
+        }
+
+        .entries-time input[type="datetime-local"]:focus {
+            outline: none;
+            border: 1px solid #555;
+         
+        }
+
+input[type=time]::-webkit-datetime-edit-hour-field:focus,
+input[type=time]::-webkit-datetime-edit-minute-field:focus,
+input[type=time]::-webkit-datetime-edit-second-field:focus,
+input[type=time]::-webkit-datetime-edit-ampm-field:focus {
+    background-color: #B4890A;
+}
+
+.btn-calculate {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #B4890A; /* Button background color */
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+    .btn-calculate:hover {
+        background-color: #946b08;
+    }
+
+@media (max-width: 768px) {
+    body, html {
+        overflow-y: auto; /* Add scrolling */
+        font-family: 'Arial', sans-serif; /* Set a clean font */
+        background-color: #f5f7fa; /* Set a light background color */
+        margin: 0; /* Remove default margin */
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+        overflow-y: auto; /* Ensure content area is scrollable */
+        padding: 20px; /* Increase padding for more space */
+        width: 100%; /* Set content width to full */
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%; /* Set cards width to full */
+        padding: 10px; /* Add padding around cards */
+        background-color: #ffffff; /* Ensure cards have a background */
+        border-radius: 10px; /* Add border radius for a nicer look */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    }
+
+    .line-graph-container,
+    .donut-chart-container {
+        margin-left: 0;
+        width: 100%; /* Ensure charts take full width */
+        background-color: #ffffff; /* Add a background color for better readability */
+        border-radius: 10px; /* Add border radius for a nicer look */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+        padding: 20px; /* Add padding for spacing */
+    }
+
+    .line-graph {
+        min-height: 300px; /* Adjust the minimum height for better visibility */
+        overflow: hidden; /* Hide overflow to prevent horizontal scroll */
+    }
+
+    .line-graph-canvas {
+        width: 100%; /* Set the width of the canvas to fill its container */
+        height: 100%; /* Set the height of the canvas to fill its container */
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff; /* Add background to header */
+        padding: 10px 20px; /* Add padding for spacing */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        border-radius: 10px; /* Add border radius for a smoother look */
+    }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333333; /* Dark color for logo text */
+        }
+
+        .header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .header .user-info img {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+
+            .header .user-info .user-name {
+                font-size: 16px;
+                color: #333333; /* Dark color for user name */
+            }
+
+        .header .download-button {
+            background-color: #4a90e2; /* Button background color */
+            color: #ffffff; /* Button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+            .header .download-button:hover {
+                background-color: #357ab7; /* Darken on hover */
+            }
+}

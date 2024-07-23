@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="NMS.Menu" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bellevue Manila</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/bellevue-hotel.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/styles/main-menu.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <nav class="sidebar" id="sidebar">
+                <div class="logo">
+                    <asp:Image ID="imgHealthIcon" runat="server" ImageUrl="~/assets/img/logo-tbh&r.png" />
+                </div>
+                <ul>
+                    <li><a href="load.aspx?target=dashboard-admin.aspx" class="active"><i class='bx bxs-dashboard'></i><span class="menu-title">Dashboard</span><span class="tooltip">Dashboard</span></a></li>
+                    <li><a href="load.aspx?target=realtime.aspx"><i class='bx bxs-time'></i><span class="menu-title">Real-Time</span><span class="tooltip">Real-Time</span></a></li>
+                    <li><a href="load.aspx?target=configuration-management.aspx"><i class='bx bxs-wrench'></i><span class="menu-title">Configuration</span><span class="tooltip">Configuration</span></a></li>
+                    <li><a href="load.aspx?target=reports.aspx"><i class='bx bxs-report'></i><span class="menu-title">Reports</span><span class="tooltip">Reports</span></a></li>
+                    <li><a href="load.aspx?target=log-in.aspx"><i class='bx bx-log-out'></i><span class="menu-title">Logout</span><span class="tooltip">Logout</span></a></li>
+                </ul>
+                <i class='bx bx-chevron-left toggle-btn' id="toggleBtn"></i>
+            </nav>
+
+            <div class="main-content">
+                <header>
+                    <div class="header-content">
+                    </div>
+                </header>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('#toggleBtn');
+
+            function toggleSidebar() {
+                const isCollapsed = sidebar.classList.contains('collapsed');
+                sidebar.classList.toggle('collapsed', !isCollapsed);
+                localStorage.setItem('sidebar-collapsed', !isCollapsed);
+
+                // Toggle the direction of the chevron
+                if (!isCollapsed) {
+                    toggleBtn.classList.remove('bx-chevron-left');
+                    toggleBtn.classList.add('bx-chevron-right');
+                } else {
+                    toggleBtn.classList.remove('bx-chevron-right');
+                    toggleBtn.classList.add('bx-chevron-left');
+                }
+            }
+
+            toggleBtn.addEventListener('click', function () {
+                toggleSidebar();
+            });
+
+            const isCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            sidebar.classList.toggle('collapsed', isCollapsed);
+            if (isCollapsed) {
+                toggleBtn.classList.remove('bx-chevron-left');
+                toggleBtn.classList.add('bx-chevron-right');
+            }
+
+            const currentLocation = window.location.href;
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            sidebarLinks.forEach(link => {
+                if (link.href === currentLocation) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Include the setInterval function to keep the session alive
+        setInterval(function () {
+            $.get('/KeepSessionAlive.aspx', function (data) {
+                console.log('Session kept alive');
+            }).fail(function () {
+                console.log('Error keeping session alive');
+            });
+        }, 600000); // 10 minutes interval
+    </script>
+</body>
+</html>

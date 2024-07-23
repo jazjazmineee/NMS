@@ -1,0 +1,268 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body, html {
+    height: 100%;
+    font-family: 'Muli-Regular', sans-serif;
+    background-color: #F9F9F9;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 'main main';
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    gap: 10px;
+}
+
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto); /* Adjust row settings if needed */
+    gap: 20px;
+    padding: 10px;
+}
+
+
+
+.card, .line-graph, .chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+    .card:hover, .chart:hover, .line-graph:hover {
+        transform: translateY(-5px);
+    }
+
+.card, .chart {
+    height: 200px;
+}
+
+.line-graph {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    height: 600px; /* Adjust the height as needed */
+    grid-column: span 3;
+    grid-row: span 2;
+    margin-bottom: -50px; /* Add some space between the line graph and the chart container */
+}
+
+
+.line-graph {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.card1, .card2, .card3 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+
+.chart1 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.chart2 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.chart3 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/*CARDS*/
+/* Card Content */
+.card-content {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+/* Card Icon */
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+/* Card Info */
+.card-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+/* Card Value (Number) */
+.card-value {
+    font-size: 46px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Card Status */
+.card-status {
+    font-size: 13px;
+    color: #181918;
+    text-align: left;
+}
+
+/*LINE*/
+.line-status {
+    width: 100%; /* Make the line-status div take full width */
+    height: auto; /* Let the height adjust automatically */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    position: relative; /* Position the h1 element relative to this container */
+}
+
+h1 {
+    margin: 10px 0; /* Add margin only at the top and bottom */
+    font-size: 24px; /* Set initial font size */
+    text-align: left; /* Align text to the left */
+    overflow: auto; /* Show scrollbar if text overflows */
+    white-space: nowrap; /* Prevent text from wrapping */
+    min-width: 100px; /* Set minimum width */
+    max-width: 50%; /* Set maximum width */
+}
+
+/*ENTRIES DROPDOWN*/
+/*DROPDOWN*/
+.entries-dropdown {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    right: 35px;
+}
+
+    .entries-dropdown select {
+        padding: 8px;
+        border: none;
+        border-radius: 0.5rem;
+        color: #B4890A;
+        background-color: white;
+        margin-left: 5px;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .entries-dropdown label {
+        margin-right: 5px;
+        font-size: 14px;
+        color: #999999;
+    }
+
+    /* Hover and focus styles */
+    .entries-dropdown select:hover,
+    .entries-dropdown select:focus {
+        border-color: #B4890A;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+
+    .entries-dropdown label {
+        margin-right: 5px; /* Adjust the margin as needed */
+        font-size: 14px; /* Adjust the font size */
+        color: #999999; /* Adjust the color */
+    }
+
+    /* Hover and focus styles */
+    .entries-dropdown select:hover,
+    .entries-dropdown select:focus {
+        border-color: #B4890A;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+/*CHART-HEADER*/
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Center items vertically */
+    gap: 20px; /* Add space between chart components */
+    height: fit-content; /* Make the chart container fit the content */
+    margin-top: -100px; /* Adjust margin to align with the two red circles */
+    grid-column: span 1;
+    grid-row: span 2; /* Adjust the span to align with card1, card2, and card3 */
+}
+
+.chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    height: auto; /* Adjust height as needed */
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    height: 200px; /* Adjust the height as needed */
+    margin-top: 20px; /* Adjust margin to align with bottom of line graph */
+}
+
+
+.chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    height: auto; /* Adjust height as needed */
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    height: 200px; /* Adjust the height as needed */
+    margin-top: 20px; /* Adjust margin to align with bottom of line graph */
+}
+
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Center items vertically */
+    gap: 20px; /* Add space between chart components */
+    height: fit-content; /* Make the chart container fit the content */
+    margin-top: 10px; /* Adjust margin as needed for proper alignment */
+    grid-column: span 1;
+    grid-row: span 2; /* Adjust the span to align with card1, card2, and card3 */
+}
+
+/* ----------------------------- */
+@media (max-width: 768px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .line-graph {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+/* Center items vertically */
+}

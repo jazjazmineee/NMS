@@ -1,0 +1,895 @@
+﻿/* SIDEBAR DAPAT MENU BAR CSS NAME */
+* {
+    font-family: 'Muli-Regular', sans-serif;
+}
+
+
+/* TOAST */
+.toast {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 1000; 
+}
+
+    .toast.active {
+        display: block;
+        transform: translateX(0%);
+    }
+
+    .toast .toast-content {
+        display: flex;
+        align-items: center;
+    }
+
+.toast-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    min-width: 35px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+}
+
+    .message .text.text-1 {
+        font-weight: 600;
+        color: #333;
+    }
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+    .toast .close:hover {
+        opacity: 1;
+    }
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+}
+
+    .toast .progress:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #4caf50;
+    }
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+#IntervalTextBox {
+    width: 150px; /* Adjust the width as needed */
+    display: inline-block; /* Display the TextBox as an inline-block element */
+}
+
+/* Set the width of the DropDownList */
+#IntervalUnitDropDown {
+    width: 130px; /* Adjust the width as needed */
+    display: inline-block; /* Display the DropDownList as an inline-block element */
+}
+
+/* --- */
+* {
+    padding-right: 2px;
+}
+/* TOP CONTAINER */
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+.top h1 {
+    margin-top: 25px;
+    font-size: 24px;
+    color: #333;
+}
+
+.top-buttons {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.button-add button {
+    color: white;
+    background-color: #B4890A;
+    border-radius: 0.375rem;
+    font-size: 14px;
+    line-height: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+}
+
+    .button-add button:hover {
+        background-color: #946b08;
+    }
+
+    .button-add button i {
+        margin-right: 0.5rem;
+    }
+
+
+
+
+/*MAIN*/
+.uno-row {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 0.375rem;
+    gap: 20px;
+}
+/* SEARCH BAR */
+.custom-search-bar {
+    position: relative;
+    width: 300px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0 0.75rem;
+    transition: border-radius 0.5s ease;
+}
+    .custom-search-bar:focus-within {
+        border-radius: 1px;
+    }
+
+    .custom-search-bar:before {
+        content: "";
+        position: absolute;
+        background: #B4890A;
+        transform: scaleX(0);
+        transform-origin: left;
+        width: 92%;
+        height: 2px;
+        bottom: 0;
+        border-radius: 1px;
+        transition: transform 0.3s ease;
+    }
+
+    .custom-search-bar:focus-within:before {
+        transform: scaleX(1);
+    }
+
+    .custom-search-bar input[type="text"],
+    .custom-search-bar input[type="search"] {
+        font-size: 0.875rem;
+        background-color: transparent;
+        width: 90%;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 0 0.5rem;
+    }
+
+    .custom-search-bar i {
+        color: #9ca3af;
+    }
+
+/*INTERVAL*/
+.select-container,
+#IntervalTextBox {
+    display: inline-block;
+    vertical-align: top; /* Align them to the top of their container */
+}
+
+
+
+/* DROPDOWN */
+.select-device {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.select-date input,
+.select-device select,
+.select-status select {
+    width: 200px; /* Set a fixed width */
+    height: 40px; /* Set a fixed height */
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    color: #181918;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+    .select-date input:focus,
+    .select-device select:focus,
+    .select-status select:focus {
+        border-color: #B4890A;
+        outline: none; /* Remove default outline */
+    }
+    
+    .select-device select:hover,
+    .select-device select:focus,
+    .select-status select:hover,
+    .select-status select:focus {
+        border-color: #B4890A;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    /* Styles for the placeholder */
+    .select-device select option[disabled],
+    .select-status select option[disabled] {
+        color: #6b7280;
+    }
+
+    /* Styles for the selected option */
+    .select-device select option[selected],
+    .select-status select option[selected] {
+        display: none;
+    }
+
+
+
+
+/* ---- */
+.align-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 20px;
+}
+
+.top-row, .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-row {
+    justify-content: flex-end;
+}
+
+
+
+/* DOS */
+.dos-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute items along the row */
+    background-color: #FFF;
+    padding: 5px;
+    gap: 20px;
+}
+
+.entries-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+    .entries-dropdown select {
+        padding: 8px;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        color: #181918;
+        background-color: white;
+        margin-left: 5px;
+        box-sizing: border-box;
+    }
+
+    .entries-dropdown label {
+        margin-right: 5px; /* Adjust the margin as needed */
+        font-size: 14px; /* Adjust the font size */
+        color: #999999; /* Adjust the color */
+    }
+
+    /* Hover and focus styles */
+    .entries-dropdown select:hover,
+    .entries-dropdown select:focus {
+        border-color: #B4890A;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+
+
+.results-label {
+    font-size: 14px;
+    color: #999999;
+    margin-right: auto; /* Push .results-label to the left */
+    order: -1; /* Move .results-label to the beginning */
+}
+
+
+
+
+/* GIRDVIRE BUTTON */
+.edit-btn {
+    background-color: transparent;
+    color: #2ecc71;
+    padding: 5px; /* Increased padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px; /* Added margin between Edit and Delete buttons */
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: transparent;
+    color: #e74c3c;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .edit-btn i,
+    .delete-btn i {
+    }
+/* Update and Cancel buttons */
+.gridview input[type="submit"],
+.gridview input[type="button"],
+.gridview input[type="reset"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    /* Cancel button */
+    .gridview input[type="submit"][id$="btnCancel"],
+    .gridview input[type="button"][id$="btnCancel"],
+    .gridview input[type="reset"][id$="btnCancel"] {
+        background-color: #dc3545;
+    }
+
+    /* Update button */
+    .gridview input[type="submit"][id$="btnUpdate"],
+    .gridview input[type="button"][id$="btnUpdate"],
+    .gridview input[type="reset"][id$="btnUpdate"] {
+        background-color: #28a745;
+    }
+
+
+/* POPUP */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensures popup is on top */
+    justify-content: center;
+    align-items: center;
+}
+
+    .popup-overlay.active {
+        display: flex; /* Show when active */
+    }
+
+.popup {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    height: 600px;
+    padding: 20px;
+    text-align: left;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    z-index: 1000; /* Ensures popup is above everything */
+    border-radius: 0.5rem;
+    overflow-y: auto; /* Add scrollbar if content exceeds height */
+}
+
+
+    .popup h2 {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .popup label {
+        display: inline-block;
+        width: 150px;
+        margin-bottom: 5px;
+        font-size: 16px;
+        color: #4b5563;
+    }
+
+    .popup .button-group {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px; /* Adjust the space between buttons */
+    }
+
+    .popup .exit-btn,
+    .popup .check-btn {
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 0.375rem;
+        width: auto;
+        box-sizing: border-box;
+        text-align: center;
+        flex: 0 0 auto;
+        height: 40px;
+        line-height: 20px;
+    }
+
+    .popup .exit-btn {
+        background-color: white;
+        color: #b4890a;
+        border: 1px solid #b4890a;
+    }
+
+    .popup .check-btn {
+        background-color: #b4890a;
+        color: white;
+    }
+
+    .popup input,
+    .popup select {
+        width: calc(100% - 170px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0; /* Corrected border width */
+        border-radius: 0.375rem;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    /*INTERVAL*/
+    /*INTERVAL*/
+
+
+    .popup .interval-dropdown {
+        width: 160px; /* Adjust as needed */
+        margin-left: 10px; /* Adjust as needed */
+    }
+
+    .popup .interval-textbox {
+        width: 152px; /* Adjust as needed */
+    }
+
+    /**/
+
+    .popup select {
+        margin-right: 5px;
+    }
+
+    .popup .select-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+        .popup .select-container:after {
+            content: '\f078';
+            color: #aaa;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            pointer-events: none;
+        }
+
+    .popup .popup-content {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .popup .popup-content > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+    /* Remove default focus and hover effects */
+    .popup input:focus,
+    .popup select:focus,
+    .popup .exit-btn:focus,
+    .popup .check-btn:focus,
+    .popup input:hover,
+    .popup select:hover,
+    .popup .exit-btn:hover,
+    .popup .check-btn:hover {
+        outline: none;
+        box-shadow: none; /* Removes shadow on focus/hover */
+    }
+
+    /* Remove any specific hover effect for dropdown and text field */
+    .popup select,
+    .popup input {
+        transition: none; /* Removes transition effects */
+    }
+
+.auto-style1 {
+    position: absolute;
+    left: 180px;
+}
+
+.auto-style2 {
+    font-size: 12px;
+    color: red;
+}
+
+/*POPUP UPDATE*/
+/* POPUP */
+.popup-update {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensures popup is on top */
+    justify-content: center;
+    align-items: center;
+}
+
+    .popup-update.active {
+        display: flex; /* Show when active */
+    }
+
+    .popup-update .popup {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        height: 600px;
+        padding: 20px;
+        text-align: left;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center horizontally and vertically */
+        z-index: 1000; /* Ensures popup is above everything */
+        border-radius: 0.5rem;
+        overflow-y: auto; /* Add scrollbar if content exceeds height */
+    }
+
+        .popup-update .popup h2 {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .popup-update .popup label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #4b5563;
+        }
+
+        .popup-update .popup .button-group {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px; /* Adjust the space between buttons */
+        }
+
+        .popup-update .popup .exit-btn,
+        .popup-update .popup .check-btn {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            width: auto;
+            box-sizing: border-box;
+            text-align: center;
+            flex: 0 0 auto;
+            height: 40px;
+            line-height: 20px;
+        }
+
+        .popup-update .popup .exit-btn {
+            background-color: white;
+            color: #b4890a;
+            border: 1px solid #b4890a;
+        }
+
+        .popup-update .popup .check-btn {
+            background-color: #b4890a;
+            color: white;
+        }
+
+        .popup-update .popup input,
+        .popup-update .popup select {
+            width: calc(100% - 170px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0; /* Corrected border width */
+            border-radius: 0.375rem;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+    .popup-update .interval-dropdown {
+        width: 160px !important;
+        margin-left: 10px !important;
+    }
+
+.popup .interval-textbox {
+    width: 152px !important;
+}
+
+/* Styles for EditBuildingDropDown and EditDeptDropDown */
+.edit-dropdown {
+    margin-left: 155px;
+}
+
+
+/* RADIO*/
+.underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #e0e0e0; /* Adjust as needed */
+    width: 450px; /* Extend the underline until the end */
+}
+
+/* Radio button styles */
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap; /* Ensure items don't wrap */
+    background-color: #FFF;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    font-size: 14px;
+}
+
+.underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #e0e0e0; /* Adjust as needed */
+    width: 100%; /* Extend the underline until the end */
+}
+
+.radio-inputs .radio {
+    text-align: center;
+    margin-right: 3px;
+}
+
+    .radio-inputs .radio:last-child {
+        margin-right: 0; /* Remove space after the last radio button */
+    }
+
+    .radio-inputs .radio input {
+        display: none;
+    }
+
+    .radio-inputs .radio .name {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        border: none;
+        padding: 10px 20px;
+        color: #B4890A;
+        transition: background-color 0.15s ease-in-out, font-weight 0.15s ease-in-out;
+        width: auto;
+        box-sizing: border-box;
+        text-align: center;
+        height: 40px;
+        line-height: 20px;
+    }
+
+    .radio-inputs .radio input:checked + .name {
+        background-color: #e8dbb5;
+        font-weight: normal;
+    }
+
+
+/*GRID*/
+.grid-container {
+    position: relative;
+    width: 100%;
+    align-self: flex-end;
+    max-height: 520px;
+    overflow: auto;
+}
+
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    border-radius: 0.375rem;
+    overflow: hidden;
+ 
+}
+
+    .gridview th {
+        border: none;
+        height: 40px;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: left;
+        padding: 2px 2px 2px 10px; /* Add padding for better readability */
+    }
+
+    .gridview td {
+        border: none;
+        height: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: left;
+        padding: 10px; /* Add padding for better readability */
+    }
+
+    .gridview th {
+        background-color: #f1f1f1;
+        color: #181918;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .gridview tr:nth-child(even) {
+        background-color: #FFF;
+    }
+
+    .gridview tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .gridview tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    /* PAGER */
+    .gridview .pager {
+        margin-top: 10px;
+        text-align: right;
+        margin-right: 25px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+        .gridview .pager a, .gridview .pager span {
+            padding: 5px 10px;
+            margin: 0 2px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+        }
+
+            .gridview .pager a:hover {
+                background-color: #f5f5f5;
+            }
+
+        .gridview .pager .selected {
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        .gridview .pager .summary-pager {
+            border: none; /* No border for the page summary */
+            padding: 0 10px; /* Adjust padding as needed */
+            margin: 0 2px; /* Adjust margin as needed */
+        }
+
+
+
+/* For smaller screens */
+@media screen and (max-width: 767px) {
+    .top-container {
+        padding: 10px;
+    }
+
+    .top h1 {
+        font-size: 20px;
+    }
+
+    .top-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-add button {
+        margin-top: 10px;
+    }
+
+    .uno-row {
+        padding: 5px;
+    }
+
+    .custom-search-bar {
+        max-width: 250px;
+    }
+}
+
+/* For screens around 44 inches */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .top h1 {
+        font-size: 22px;
+    }
+
+    .custom-search-bar {
+        max-width: 300px;
+    }
+}
